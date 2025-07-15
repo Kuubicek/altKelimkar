@@ -1,0 +1,337 @@
+
+:root {
+  --dark-blue:    #212050;
+  --light-blue:   #5B8DEF;
+  --white:        #FFFFFF;
+  --grey-100:     #F3F4F6;
+  --grey-300:     #D1D5DB;
+  --error-red:    #DC2626;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body, html {
+  height: 100%;
+  width: 100%;
+  font-family: Arial, sans-serif;
+  background: var(--dark-blue);
+  color: var(--white);
+  line-height: 1.4;
+}
+
+/* ===== PŘIHLAŠOVÁNÍ (index.html) ===== */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 80px);
+  padding: 1rem;
+}
+.login-box {
+  width: 100%;
+  max-width: 320px;
+  background: var(--white);
+  color: #000;
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+.login-box h1 {
+  margin-bottom: 1rem;
+  color: var(--dark-blue);
+}
+.login-box input {
+  width: 100%;
+  padding: 0.6rem;
+  margin: 0.5rem 0;
+  border: 2px solid var(--grey-300);
+  border-radius: 4px;
+  font-size: 1rem;
+}
+.login-box input:focus {
+  outline: none;
+  border-color: var(--light-blue);
+  box-shadow: 0 0 0 3px rgba(91,141,239,0.4);
+}
+.login-box button {
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 1rem;
+  background: var(--dark-blue);
+  color: var(--white);
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.login-box button:hover {
+  background: var(--light-blue);
+}
+.login-box .status {
+  margin-top: 0.75rem;
+  font-weight: bold;
+  color: var(--error-red);
+}
+
+/* ===== FORMULÁŘ (kelimkar.html) ===== */
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 80px);
+  padding: 1rem;
+}
+.form-box {
+  width: 100%;
+  max-width: 320px;
+  background: var(--white);
+  color: #000;
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+.form-box h2 {
+  margin-bottom: 1rem;
+  color: var(--dark-blue);
+}
+.form-box select,
+.form-box input[type="number"] {
+  width: 100%;
+  padding: 0.6rem;
+  margin: 0.5rem 0;
+  border: 2px solid var(--grey-300);
+  border-radius: 4px;
+  font-size: 1rem;
+}
+.form-box select:focus,
+.form-box input[type="number"]:focus {
+  outline: none;
+  border-color: var(--light-blue);
+  box-shadow: 0 0 0 3px rgba(91,141,239,0.4);
+}
+.form-box button {
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 1rem;
+  background: var(--dark-blue);
+  color: var(--white);
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.form-box button:hover {
+  background: var(--light-blue);
+}
+
+/* ===== HEADER (všechny stránky) ===== */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1rem;
+  background: var(--dark-blue);
+}
+.site-header .logo {
+  max-height: 50px;
+  filter: brightness(0) invert(1);
+}
+.user-name {
+  margin-left: 0.5rem;
+  font-weight: bold;
+  color: var(--white);
+}
+
+/* ===== CONTAINER (kelimkar+stankar+nadrizeny) ===== */
+.container {
+  width: 95%;
+  max-width: 1100px;
+  margin: 2rem auto;
+  background: var(--white);
+  color: #000;
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  padding: 1rem;
+}
+.container h1 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  background: var(--dark-blue);
+  color: var(--white);
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  text-align: left;
+}
+
+/* ===== STATUS V TABULCE ===== */
+.status {
+  margin-top: 0.75rem;
+  font-weight: bold;
+}
+.status.error { color: var(--error-red); }
+.status.ok    { color: green; }
+
+/* ===== FILTR (nadrizeny.html) ===== */
+.filter-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 0.75rem 1rem;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+}
+.filter-container label {
+  font-weight: 500;
+  color: var(--dark-blue);
+}
+.filter-container select,
+.filter-container input[type="date"] {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--grey-300);
+  border-radius: 6px;
+  font-size: 0.95rem;
+  background: #fff;
+  color: #111827;
+}
+.filter-container button {
+  padding: 0.5rem 1rem;
+  background: var(--light-blue);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background 0.3s;
+}
+.filter-container button:hover {
+  background: var(--dark-blue);
+}
+
+/* ===== TABLE (stánkař+nadrizeny) ===== */
+.table-container {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+table {
+  width: 100%;
+  min-width: 900px;
+  margin: 0 auto;
+  border-collapse: collapse;
+  background: var(--white);
+  color: #000;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  table-layout: fixed;
+}
+th, td {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  padding: 0.6rem 0.75rem;
+  text-align: center;
+  vertical-align: middle;
+}
+th:nth-child(1), td:nth-child(1) { width: 50px; }
+th:nth-child(2), td:nth-child(2) { width: 150px; min-width: 200px; }
+th:nth-child(3), td:nth-child(3) { width: 150px; }
+th:nth-child(4), td:nth-child(4) { width: 100px; }
+th:nth-child(5), td:nth-child(5) { width: 80px; }
+th:nth-child(6), td:nth-child(6) { width: 80px; }
+/* Čas (7.) */
+th:nth-child(7), td:nth-child(7) {
+  min-width: 200px;
+  width: auto;
+  text-overflow: clip;
+  overflow: visible;
+}
+/* Status (8.) */
+th:nth-child(8), td:nth-child(8) {
+  width: 100px;
+  white-space: nowrap;
+}
+/* Akce (9.) */
+th:nth-child(9), td:nth-child(9) {
+  width: 80px;
+  white-space: nowrap;
+}
+th {
+  background: var(--dark-blue);
+  color: var(--white);
+}
+tr:nth-child(even) {
+  background: var(--grey-100);
+}
+
+/* ===== BUTTONS ===== */
+button.confirm {
+  padding: 0.4rem 0.6rem;
+  background: var(--dark-blue);
+  color: var(--white);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+button.confirm:hover {
+  background: var(--light-blue);
+}
+.logout-btn {
+  margin-left: auto;
+  margin-right: 1rem;
+  padding: 0.4rem 0.8rem;
+  background: var(--error-red);
+  color: var(--white);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.logout-btn:hover {
+  background: #bf1e1e;
+}
+
+/* ===== MOBILE (<600px) ===== */
+@media (max-width: 600px) {
+  .container { padding: 1rem; }
+  th, td { padding: 0.4rem; font-size: 0.9rem; }
+  .site-header .logo { max-height: 40px; }
+
+  /* filtrovací panel */
+  .filter-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .filter-container label,
+  .filter-container select,
+  .filter-container input[type="date"],
+  .filter-container button {
+    width: 100%;
+  }
+  .filter-container button {
+    margin-top: 0.5rem;
+  }
+
+  /* tabulka jako blok pro swipe */
+  table {
+    display: block !important;
+    width: auto !important; 
+    min-width: 100%;
+    table-layout: auto;
+  }
+  .table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
