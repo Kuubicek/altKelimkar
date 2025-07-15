@@ -51,6 +51,11 @@
       <div id="status" class="status"></div>
     </div>
   </div>
+  <div class="notifications-container">
+    <h3>📬 Požadavky od stánkařů</h3>
+    <div id="notificationsList">Načítám…</div>
+  </div>
+
 
   <!-- B) recoverSession + requireAuth + init -->
   <script>
@@ -156,6 +161,57 @@
         });
       });
     }
+
+    // Načti požadavky
+async function loadNotifications() {
+  const container = document.getElementById('notificationsList');
+  try {
+    const { data, error } = await supabaseClient
+      .from('notifications')
+      .select('*')
+      .eq('status', 'čeká')
+      .order('timestamp', { ascending: false });
+
+    if (error) throw error;
+
+    if (!data.length) {
+      container.innerHTML = 'Žádné požadavky';
+      return;
+    }
+
+    container.innerHTML = data.map(n => `
+      <div class="notification">
+        <strong>${n.stankar}</strong>: ${n.message}<br>
+        <button onclick="markAsDelivered(${n.id})">✅ Doneseno</button>
+      </div>
+    `).join('');
+  } catch (err) {
+    console.error(err);
+    container.innerHTML = '❌ Chyba načítání požadavků';
+  }
+}
+
+// Označ jako vyřízené
+async function markAsDelivered(id) {
+  try {
+    const { error } = await supabaseClient
+      .from('notifications')
+      .update({ status: 'vyřízeno' })
+      .eq('id', id);
+
+    if (error) throw error;
+
+    loadNotifications(); // reload
+  } catch (err) {
+    console.error(err);
+    alert('❌ Nepodařilo se označit jako vyřízené');
+  }
+}
+
+// Automatický refresh každých 10s
+setInterval(loadNotifications, 10000);
+loadNotifications();
+
   </script>
 
   <!-- Service Worker registrace -->
