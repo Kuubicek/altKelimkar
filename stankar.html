@@ -23,6 +23,10 @@
 
   <div class="container">
     <h1>Potvrzení transakcí</h1>
+    <button id="btnRequest" class="confirm" style="margin-bottom: 1rem;">
+  📦 Potřebuji kelímky
+</button>
+
     <div id="status" class="status ok">Načítám…</div>
     <div class="table-container">
       <table id="tx-table" style="display:none;">
@@ -78,6 +82,30 @@
         console.warn("❌ Not authenticated → redirect to login");
       }
     });
+
+    document.getElementById('btnRequest').addEventListener('click', async () => {
+  try {
+    const { data: { session } } = await supabaseClient.auth.getSession();
+    const { data: profile } = await supabaseClient
+      .from('profiles')
+      .select('name')
+      .eq('id', session.user.id)
+      .single();
+    const standName = profile.name;
+
+    const { error } = await supabaseClient
+      .from('notifications')
+      .insert([{ stankar: standName, message: 'Potřebuji kelímky', status: 'čeká' }]);
+
+    if (error) throw error;
+
+    alert('✅ Požadavek odeslán');
+  } catch (err) {
+    console.error(err);
+    alert('❌ Nepodařilo se odeslat požadavek');
+  }
+});
+
 
     // ==== PŮVODNÍ FUNKCE ==== 
     async function loadForStankar() {
